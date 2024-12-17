@@ -144,20 +144,20 @@ body{
     text-align: center;
 }
 
-#secundario > div:nth-of-type(1) > p{
+#secundario > #banca > p{
     position: absolute;
     top: 8%;
     right: 85%;
 }
 
-#secundario > div:nth-of-type(3) > p {
+#secundario > #cartaBonus > p{
     position: absolute;
     top: 5%;
     right: 25%;
     text-align: center;
 }
 
-#secundario > div:nth-of-type(2)  > p{
+#secundario > #tusCartas > p{
     position: absolute;
     bottom: 32%;
     right: 85%;
@@ -167,7 +167,7 @@ body{
     position: relative;     
     background-color: var(--color-verde); 
     width: 50%;
-    bottom: 5%;
+    bottom: 5%;  
     left: 25%; 
     -webkit-text-stroke: 2px var(--color-negro); 
     border-radius: 8px; 
@@ -205,7 +205,7 @@ body{
 }
 
 /* Estilo principal del número 7 */
-#secundario > .cartaG > .carta > .circulo > .num {
+#tusCartas > .carta > .circulo > .num {
     font-size: 3.5rem; 
     color: var(--color-amarillo);
     text-align: center; 
@@ -223,7 +223,7 @@ body{
 }
 
 /* Estilo para el "1/2" dentro del número */
-.cartaG > .carta > .circulo > .num > .medio {
+#tusCartas > .carta > .circulo > .num > .medio {
     font-size: 2rem; 
     position: absolute;
     top: 30%;
@@ -234,23 +234,34 @@ body{
     display: inline-block;
 }
 
+
+
 /* Estilos para organizar las cartas de la parte de tus cartas */
-#secundario > div:nth-of-type(2) > .carta {
+#tusCartas .carta {
     position: relative;
     display: inline-block; 
-    margin-top: 5%;
+    margin-top: %;
     left: 20%;
     background-color: var(--color-amarillo);
 }
 
-#secundario > div:nth-of-type(1) > .carta {
-    position: relative;
-    display: inline-block;
-    margin-top: 2%;
+/* Estilos para organizar las cartas de la parte de banca */
+#banca .carta {
+    position: absolute;
+    display: inline-block; 
+    top: 5%;
+    left: 20%;
 }
 
-#secundario > div:nth-of-type(3) > .carta {
-    position: absolute;
-    top: 2.5%;
-    left: 75%;
+
+/* Estilos para organizar las cartas de la parte de banca */
+#banca .carta {
+    position: relative;
+    
 }
+
+
+
+
+
+
