@@ -1,0 +1,215 @@
+/* Paleta de colores */
+:root {
+    --color-verde: #00823E;   
+    --color-amarillo: #FFD700;   
+    --color-rojo: #E30016;      
+    --color-blanco: #FFFFFF;            
+    --color-negro: #000000;             
+    --color-gris: #C0C0C0;     
+}
+
+body{
+    font-family: 'Archivo Black', sans-serif;
+}
+
+/* Div principal amarillo con borde verde */
+#principal {
+    position: relative;
+    width: 40%;
+    height: 45vh;
+    border: 10px solid var(--color-verde);
+    background-color: var(--color-amarillo);
+    margin: 0 auto;
+    margin-top: 25%;
+    transform: translateY(-50%);
+}
+
+/* Div secundario amarillo con borde verde */
+#secundario {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    border-radius: 2% 2% 0 2%;
+    height: 35vh;
+    background-color: var(--color-rojo);
+}
+
+/* Logo de la once */
+#principal > img {
+    border: 3px solid var(--color-blanco);
+    width: 15%;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+/* Titulo principal del div */
+#principal > h2 {
+    position: absolute;
+    top: -15%;
+    right: 15%;
+    font-size: 3rem;
+    -webkit-text-stroke: 1px var(--color-blanco);
+    font-style: italic;
+    letter-spacing: -2px;
+}
+
+#principal > h2 > span {
+    font-size: 5rem;
+    color: var(--color-rojo);
+    -webkit-text-stroke: 1px var(--color-blanco);
+}
+
+/* Estilos del número grande "7" */
+#principal > #siete {
+    font-size: 7rem; 
+    font-weight: bold;
+    color: var(--color-amarillo);
+    -webkit-text-stroke: 4px var(--color-negro); 
+    text-shadow: 6px 6px 0px var(--color-verde); 
+    letter-spacing: -4px; 
+    position: absolute;
+    top: -12%;
+    left: 5%; 
+    transform: rotate(-10deg); 
+    line-height: 1; 
+    display: inline-block; 
+}
+
+/* Estilos del "1/2" como superíndice */
+#principal > #siete > span {
+    font-size: 4rem; 
+    position: relative;
+    top: -25px; 
+    left: -10px; 
+    color: var(--color-amarillo); 
+    -webkit-text-stroke: 3px var(--color-negro); 
+    text-shadow: 4px 4px 0px var(--color-verde); 
+    letter-spacing: -2px; 
+    display: inline-block; 
+}
+
+/* Información del rasca */
+#principal > #info {
+    font-size: 0.7rem;
+    width: 35%;
+    position: absolute;
+    top: 52%;
+    left: 2%;
+    text-align: justify;
+}
+
+/* Información del rasca */
+#principal > #info > span {
+    color: var(--color-verde);
+    font-weight: bold;
+}
+
+/* Numeros de serie del boleto */
+#principal > #numeros {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 35%;
+    background-color: var(--color-blanco);
+    height: 3vh;
+    align-items: center;
+    justify-content: center;
+}
+
+#principal > #numeros > p {
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+    font-weight: bold;
+    color: var(--color-negro);
+}
+#principal > #euro{
+    position: absolute;
+    top: 0.5%;
+    right: 2%;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Tablero */
+
+#secundario p {
+    font-size: 0.8rem; 
+    font-weight: bold; 
+    color: var(--color-blanco); 
+    text-transform: uppercase; 
+    transform: rotate(-90deg); 
+    letter-spacing: 2px; 
+    text-align: center;
+}
+
+#secundario > #banca > p{
+    position: absolute;
+    top: 8%;
+    right: 85%;
+}
+
+#secundario > #cartaBonus > p{
+    position: absolute;
+    top: 5%;
+    right: 25%;
+    text-align: center;
+}
+
+#secundario > #tusCartas > p{
+    position: absolute;
+    bottom: 35%;
+    right: 85%;
+}
+
+#secundario > #premio {
+    position: relative;     
+    background-color: var(--color-verde); 
+    width: 50%; 
+    top: 65%; 
+    left: 25%; 
+    -webkit-text-stroke: 2px var(--color-negro); 
+    border-radius: 8px; 
+    text-align: center;
+}
+
+#secundario > #premio > p {
+    font-size: 2rem;
+    transform: none; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    -webkit-text-stroke: 1.5    px var(--color-negro); 
+}
+
+
+.carta {
+    position: absolute;
+    width: 18%;
+    height: 10vh;
+    top: 4%;
+    left: 10%;
+    background-color: var(--color-verde);
+    border: 2px solid var(--color-blanco);
+    border-radius: 2px;
+}
+
+.carta > .circulo {
+    position: absolute;
+    width: 100%;  
+    height: 100%;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    background-color: var(--color-rojo);
+    border-radius: 50%; /* Hace que el círculo sea redondeado */
+}
+
+.carta > .circulo > .num {
+    transform: none; 
+    font-size: 1rem;
+    color: var(--color-amarillo);
+    text-align: center; /* Para centrar el texto dentro del círculo */
+    margin: 0; /* Para quitar cualquier margen innecesario */
+}
+
