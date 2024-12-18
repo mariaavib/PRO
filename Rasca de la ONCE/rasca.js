@@ -1,13 +1,13 @@
 // Rango de valores posibles en el juego (1 a 7 y figuras como 1/2)
 const rangoValores = [1, 2, 3, 4, 5, 6, 7, 0.5]; // 0.5 representa el "½"
 
-// Array para la banca (inicialmente vacío)
+// Array para la banca 
 let banca = [];
 
-// Array para tus cartas (inicialmente vacío)
+// Array para tus cartas 
 let tusCartas = [];
 
-// Array para la carta bonus (inicialmente vacío, solo una carta)
+// Array para la carta bonus 
 let cartaBonus = [];
 
 // Premios posibles
@@ -27,18 +27,52 @@ function numeroRandom() {
 
 // Función para preparar la partida
 function preparacionPartida() {
-    for (let i = 0; i < 2; i++) {
-        banca.push(numeroRandom());
-    }
-    console.log(banca);
+    // Primera carta de la banca
+    let cartaBanca1 = numeroRandom();
+    banca.push(cartaBanca1);
+    console.log("Primera carta de la banca: " + cartaBanca1);
 
-    for (let i = 0; i < 3; i++) {
-        tusCartas.push(numeroRandom());
-    }
-    console.log(tusCartas);
+    // Cogemos el numero que ha salido y le restamos 7.5 que es valor maximo que te puede salir
+    let maxValorBanca2 = 7.5 - cartaBanca1;
 
+    let cartaBanca2 = numeroRandomMenorOIgualA(maxValorBanca2);
+    banca.push(cartaBanca2);
+    console.log("Segunda carta de la banca: " + cartaBanca2);
+
+    // Generar cartas para el jugador tusCartas
+    let cartaTusC1 = numeroRandom();
+    tusCartas.push(cartaTusC1);
+    console.log("Primera carta de tus cartas: " + cartaTusC1);
+
+    // Determinamos el máximo valor posible para la segunda carta de tus cartas
+    let maxValorTus2 = 7.5 - cartaTusC1;
+
+    // Si la segunda carta supera 7.5, no la generamos
+    let cartaTusC2 = numeroRandomMenorOIgualA(maxValorTus2);
+    tusCartas.push(cartaTusC2);
+    console.log("Segunda carta de tus cartas: " + cartaTusC2);
+
+    // Determinamos el máximo valor posible para la tercera carta de tus cartas
+    let maxValorTus3 = 7.5 - (cartaTusC1 + cartaTusC2);
+
+    // Si la tercera carta supera 7.5, no la generamos
+    let cartaTusC3 = numeroRandomMenorOIgualA(maxValorTus3);
+    tusCartas.push(cartaTusC3);
+    console.log("Tercera carta de tus cartas: " + cartaTusC3);
+
+    // Generar carta bonus
     cartaBonus.push(numeroRandom());
-    console.log(cartaBonus);
+    console.log("Carta bonus: " + cartaBonus);
+}
+
+// Función para obtener un número aleatorio de la lista, pero restringido a un máximo
+function numeroRandomMenorOIgualA(max) {
+    // Si el valor máximo es menor que 0.5, devolvemos 0.5
+    if (max < 0.5) return 0.5;
+
+    // Filtro los valores disponibles para que no superen el valor máximo
+    let valoresPosibles = rangoValores.filter(valor => valor <= max);
+    return valoresPosibles[Math.floor(Math.random() * valoresPosibles.length)];
 }
 
 // Función para manejar la partida
@@ -78,23 +112,40 @@ function partida() {
         });
     });
 
+    let cartaBonus = document.querySelector("#secundario > div:nth-of-type(3) > .carta");
+    cartaBonus.addEventListener("click", () =>{
+        console.log(numeroRandom());   
+        const premioBonus = obtenerPremioAleatorio();
+        console.log(premioBonus);
+    })
+
+    // Validamos los premios después de las interacciones
     validarPremios();
 }
 
 // Función para seleccionar un premio aleatorio
 function obtenerPremioAleatorio() {
     const premioAleatorio = premios[Math.floor(Math.random() * premios.length)];
+    
     console.log("Premio asignado: " + premioAleatorio);
     return premioAleatorio;
 }
+
+let premio = document.querySelector("#secundario > div:nth-of-type(4)")
+
+premio.addEventListener("click", () => {
+    console.log(obtenerPremioAleatorio());
+})
 
 // Función para validar los premios
 function validarPremios() {
     console.log("Validando premios...");
 
+    // Asegurarnos de que ambas sumas (banca y jugador) hayan sido calculadas
     if (sumaBanca > 0 && sumaTusCartas > 0) {
         let premio = obtenerPremioAleatorio();
-
+        comparacionBonus();
+        // Comparación entre la banca y el jugador
         if (sumaBanca > sumaTusCartas) {
             console.log("Has perdido. Premio asignado: " + premio);
         } else if (sumaBanca < sumaTusCartas) {
@@ -103,9 +154,16 @@ function validarPremios() {
             console.log("Es un empate.");
         }
     }
+
 }
 
-
+function comparacionBonus() {
+    tusCartas.forEach(carta => {
+        if(cartaBonus === carta){
+            console.log(premioBonus);    
+        }
+    });
+}
 
 // Inicia la partida
 partida();
