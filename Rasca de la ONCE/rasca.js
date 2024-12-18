@@ -143,14 +143,14 @@ function partida() {
 function obtenerPremioAleatorioB() {
     const premioAleatorioB = bonus[Math.floor(Math.random() * bonus.length)];
 
-    console.log("Premio asignado: " + premioAleatorioB);
+    console.log("Premio asignado: " + premioAleatorioB+"€");
     return premioAleatorioB;
 }
 
 function obtenerPremioAleatorio() {
     const premioAleatorio = premios[Math.floor(Math.random() * premios.length)];
 
-    return premioAleatorio;
+    return premioAleatorio+"€";
 }
 
 // Seleccionar el premio con el evento click
